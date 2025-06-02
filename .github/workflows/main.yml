@@ -24,14 +24,15 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: |
-          cd adv_ecom_app
-          npm install
+        run: npm install
+        working-directory: Advanced_Ecom_App
 
       - name: Run tests
         run: |
           cd adv_ecom_app
           npm test
 
-      - name: Build Vite App
+
+      - name: Build
         run: npm run build
+        working-directory: Advanced_Ecom_App

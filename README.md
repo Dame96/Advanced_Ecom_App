@@ -1,35 +1,56 @@
 # Advanced_Ecom_App
 
-Hi Team welcome back to my Repo: This is a simple, yet advanced e-commerce web application built with React, Redux Toolkit, and React Query, using data from the [FakeStoreAPI](https://fakestoreapi.com/). It demonstrates key modern React development practices including state management, API integration, dynamic UI updates, and routing. I learned how to use these advanced context for more effiecent state management througuout my React App and better handling API data with React Query. 
+Hi Team, welcome back to my repo! This is a simple yet advanced e-commerce web application built with React, Redux Toolkit, and React Query, using Firebase and Firestore to fetch product data, manage user orders, and store product information.
 
-The Features of this app: 
+The project demonstrates modern React development practices including state management, real-time database integration, dynamic UI updates, and client-side routing.
 
-- Product listing with title, image, description, price, category, and rating
-- Dynamic product filtering by category (via dropdown)
-- Shopping cart powered by Redux Toolkit
-- Add/remove items to/from cart
-- Total price and quantity calculation
-- Cart state persisted using `sessionStorage`
-- Simulated checkout functionality
-- React Router with Home (`/`) and Cart (`/cart`) routes
-- Navigation header with total cart items indicator
+I learned how to implement efficient state management using Redux Toolkit, and how to handle data fetching and caching more effectively with React Query, particularly when integrating with Firebase services.
 
-Technologies that were used: 
+Features: 
+- Product Listing: View products with title, image, description, price, category, and rating
 
-- [React](https://react.dev/)
-- [Redux Toolkit](https://redux-toolkit.js.org/)
-- [React Redux](https://react-redux.js.org/)
-- [React Query](https://tanstack.com/query/latest)
-- [React Router DOM](https://reactrouter.com/)
-- [FakeStoreAPI](https://fakestoreapi.com/)
+- Category Filtering: Dynamically filter products by category (via dropdown)
 
+- Shopping Cart:
+
+- Add/remove items
+
+- View total price and quantity
+
+- Cart state persisted using sessionStorage
+
+- Checkout Simulation: Mimics a checkout process
+
+Routing:
+
+Home (/)
+
+Cart (/cart)
+
+Navigation Header: Displays total items in cart
+
+Technologies Used For this project: 
+
+React
+
+Redux Toolkit
+
+React Redux
+
+React Query
+
+React Router DOM
+
+Firebase (Firestore for database, Authentication if used)
+
+Vercel (for deployment) Here is a link to the live site! - https://advanced-ecom-krncspxfg-damon-dixons-projects.vercel.app/
 
 
 To Run this Project Locally: 
 
 1. Clone the repository
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone <repoURL>
+cd adv_ecom_app
 
 2. Install dependencies
 npm install

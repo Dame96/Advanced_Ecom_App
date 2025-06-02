@@ -24,15 +24,16 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
-        
+        run: |
+          cd adv_ecom_app
+          npm install
 
       - name: Run tests
         run: |
           cd adv_ecom_app
           npm test
 
-
       - name: Build
-        run: npm run build
-        
+        run: |
+          cd adv_ecom_app
+          npm run build

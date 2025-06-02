@@ -28,8 +28,9 @@ jobs:
           cd adv_ecom_app
           npm install
 
-      - name: Run tests with Vitest
+      - name: Run tests
         run: npm test
+        working-directory: ./adv_ecom_ap
 
       - name: Build Vite App
         run: npm run build

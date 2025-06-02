@@ -1,9 +1,12 @@
+// Cart.jsx
+// this file defines the Cart component, which displays the items in the user's shopping cart, allows them to remove items, and proceed to checkout.
+
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { removeFromCart } from './cartSlice';
 import { clearCart } from './cartSlice';
-
+import { placeOrder } from '../../firebase/orderService'; // Adjust the import path as needed
 
 const Cart = () => {
 
@@ -21,11 +24,30 @@ const Cart = () => {
         dispatch(removeFromCart(id));
     };
 
-    const handleCheckout = () => {
-        dispatch(clearCart());
-        setCheckedOut(true);
-        setTimeout(() => setCheckedOut(false), 3000);
+    const handleCheckout = async () => {
+        
+        if (items.length === 0) {
+            alert("Your cart is empty.");
+            return;
+          }
+        
+        try {
+            // Directly use totalPrice, assuming it's a valid number
+            const orderId = await placeOrder(items, totalPrice.toFixed(2));
+            console.log("Order placed! ID:", orderId);
+
+            // Clear cart and show success
+            dispatch(clearCart());
+            setCheckedOut(true);
+            setTimeout(() => setCheckedOut(false), 3000);
+        } catch (err) {
+            console.error("Failed to place order:", err);
+            alert("Something went wrong placing your order.");
+        }
     };
+
+
+
 
     return (
         <div>

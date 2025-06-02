@@ -1,3 +1,7 @@
+// cartSlice.js
+// this file manages the shopping cart state using Redux Toolkit.
+
+
 import { createSlice } from '@reduxjs/toolkit';
 
 const savedCart = sessionStorage.getItem('cart');
@@ -19,17 +23,21 @@ const cartSlice = createSlice({
     reducers: {
         addToCart: (state, action) => {
             const item = action.payload;
+            const price = item.price;
+
+          
             const existingItem = state.items.find((i) => i.id === item.id);
-            // Check if the item already exists in the cart
+          
             if (existingItem) {
-                existingItem.quantity += 1;
+              existingItem.quantity += 1;
             } else {
-                state.items.push({ ...item, quantity: 1 });
+              state.items.push({ ...item, quantity: 1 });
             }
+          
             state.totalQuantity += 1;
-            state.totalPrice += item.price;
+            state.totalPrice += price; 
             saveCartToSessionStorage(state);
-        },
+          },
         removeFromCart: (state, action) => {
             const id = action.payload;
             const existingItem = state.items.find(item => item.id === id);
@@ -40,7 +48,7 @@ const cartSlice = createSlice({
             }
             saveCartToSessionStorage(state);
         },
-        
+
         clearCart: (state) => {
             state.items = [];
             state.totalQuantity = 0;

@@ -1,18 +1,39 @@
 // Header.jsx
-// header component to show navigation links and cart item count
+// This component renders the header with navigation links and user authentication status.
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase/firebaseConfig';
+import { logoutUser } from '../firebase/authService';
 
 const Header = () => {
   const totalItems = useSelector((state) => state.cart.totalQuantity);
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logoutUser();
+    navigate('/');
+  };
 
   return (
-    <header style={{ padding: '1rem', background: '#eee', marginBottom: '1rem' }}>
-      <nav>
-        <Link to="/" style={{ marginRight: '1rem' }}>Home</Link>
-        <Link to="/cart">Cart ({totalItems})</Link>
+    <header className="header">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className="nav-left">
+          <NavLink className="nav-link" to="/">Home</NavLink>
+          <NavLink className="nav-link" to="/cart">Cart ({totalItems})</NavLink>
+          <NavLink className="nav-link" to="/profile">Profile</NavLink>
+          <NavLink className="nav-link" to="/admin/products">Manage Products</NavLink>
+        </div>
+        <div className="nav-right">
+          {user ? (
+            <button className="logout-button" onClick={handleLogout}>Logout</button>
+          ) : (
+            <NavLink className="nav-link" to="/login">Login</NavLink>
+          )}
+        </div>
       </nav>
     </header>
   );

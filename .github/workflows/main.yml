@@ -29,8 +29,9 @@ jobs:
           npm install
 
       - name: Run tests
-        run: npm test
-        working-directory: ./adv_ecom_ap
+        run: |
+          cd adv_ecom_app
+          npm test
 
       - name: Build Vite App
         run: npm run build

@@ -24,7 +24,9 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd adv_ecom_app
+          npm install
 
       - name: Run tests with Vitest
         run: npm test

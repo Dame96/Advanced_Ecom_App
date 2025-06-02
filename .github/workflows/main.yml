@@ -1,0 +1,33 @@
+# main.yml
+# this file defines a GitHub Actions workflow for CI/CD
+
+name: CI Pipeline
+
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests with Vitest
+        run: npm test
+
+      - name: Build Vite App
+        run: npm run build

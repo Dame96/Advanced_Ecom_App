@@ -1,5 +1,6 @@
 // CartIntegration.test.jsx
 // this file tests the integration of the Home component with the Redux store and ensures that adding an item to the cart updates the state correctly.
+//Tests are implemented using Vitest instead of Jest for performance and native Vite integration.
 
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';

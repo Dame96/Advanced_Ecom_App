@@ -1,6 +1,6 @@
 # main.yml
-# this file defines a GitHub Actions workflow for CI/CD
-# continuoius integration and deployment pipeline
+# This file defines a GitHub Actions workflow for CI/CD pipeline. 
+# These actions will be trigger on "push"
 
 name: CI Pipeline
 

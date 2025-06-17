@@ -1,4 +1,7 @@
 # New Workflow File to trigger updated workflow in github actions
+# Note: Vercel auto-deploy on push is disabled in dashboard settings.
+# This workflow manually handles deployment via GitHub Actions.
+
 
 name: CI Pipeline
 

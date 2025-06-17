@@ -24,13 +24,15 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: adv_ecom_app
 
       - name: Run tests with Vitest
         run: npm test
+        working-directory: adv_ecom_app
 
       - name: Build Vite App
         run: npm run build
-
+        working-directory: adv_ecom_app
 
   deploy:
     name: Deploy to Vercel

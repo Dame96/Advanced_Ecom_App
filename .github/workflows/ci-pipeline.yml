@@ -35,21 +35,19 @@ jobs:
         working-directory: adv_ecom_app
 
   deploy:
-    name: Deploy to Vercel
-    runs-on: ubuntu-latest
-    needs: build-and-test   # ensures this runs only if build-and-test succeeds
+  name: Deploy to Vercel
+  runs-on: ubuntu-latest
+  needs: build-and-test
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Install Vercel CLI
-        run: npm install -g vercel
-
-      - name: Deploy to Vercel
-        run: |
-          vercel --prod \
-                 --token=${{ secrets.VERCEL_TOKEN }} \
-                 --confirm \
-                 --org ${{ secrets.VERCEL_ORG_ID }} \
-                 --project ${{ secrets.VERCEL_PROJECT_ID }}
+    - name: Deploy to Vercel
+      uses: amondnet/vercel-action@v25
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        working-directory: adv_ecom_app
+        prod: true
